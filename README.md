@@ -1,3 +1,3 @@
-#HardwareStore
+# HardwareStore
 
 Proyecto en desarrollo
