@@ -1,11 +1,8 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
 from nltk.corpus import stopwords
-from nltk import ngrams
 import re
 import pandas as pd
-import pprint
-import sys
 
 cachedStopWords = stopwords.words("english")
 cachedStopWords.extend(stopwords.words("spanish"))

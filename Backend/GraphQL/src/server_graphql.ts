@@ -1,5 +1,7 @@
 /*Code modified from https://www.apollographql.com/docs/apollo-server/getting-started */
-
+import * as dotenv from "dotenv";
+dotenv.config({ path: __dirname+'/.env' });
+import axios from 'axios';
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 
