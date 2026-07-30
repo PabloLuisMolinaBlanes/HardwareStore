@@ -1,0 +1,9 @@
+type Query {
+    products: [ProductDTO]
+}
+
+type ProductDTO {
+    name: String!,
+    description: String,
+    price: Float!,
+}

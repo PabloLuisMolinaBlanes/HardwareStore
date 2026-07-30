@@ -4,8 +4,7 @@
 // Get a free hosted Postgres database in seconds: `npx create-db`
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -24,6 +23,6 @@ model Product {
   description   String? @db.Text
   photo Bytes @db.LongBlob
   price Float @db.Double
-  category ProductCategory @relation(fields: [categoryId], references: [id])  
-  categoryId Int
+  category ProductCategory @relation(fields: [category_id], references: [id])  
+  category_id Int
 }

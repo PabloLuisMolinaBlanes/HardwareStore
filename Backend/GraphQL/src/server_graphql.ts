@@ -2,38 +2,26 @@
 import axios from 'axios';
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
+import { getAllProducts } from './products/product-service.js';
+import ProductDTO from './types/product'
+import { readFileSync } from 'fs';
 
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
 // your data.
-const typeDefs = `#graphql
-
-  type Test {
-    test1: String
-    test2: String
-  }
-
-  type Query {
-    tests: [Test]
-  }
-`;
-
-const tests = [
-  {
-    test1: 'Test1',
-    test2: 'Test2',
-  },
-  {
-    test1: 'Test1',
-    test2: 'Test2',
-  },
-];
+const typeDefs = readFileSync('./src/types/schema.graphql', { encoding: 'utf-8' });
 
 const resolvers = {
   Query: {
-    tests: () => tests,
+    products: async () => {return await getAllProducts()},
   },
 };
+
+interface MyContext {
+  dataSources: {
+    products: ProductDTO[];
+  };
+}
 
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
