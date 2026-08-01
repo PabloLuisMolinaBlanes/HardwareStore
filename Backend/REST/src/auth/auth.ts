@@ -1,6 +1,6 @@
-import prisma from "../db";
-import { comparePasswords } from "./utils/password";
-import { sign_jwt, decode_jwt } from "./utils/jwt/jwt";
+import prisma from "../db.js";
+import { comparePasswords } from "./utils/password.js";
+import { sign_jwt, decode_jwt } from "./utils/jwt/jwt.js";
 
 export async function getProfile(username: string) {
     const user_received = await prisma.user.findFirst({
@@ -19,9 +19,11 @@ export async function authenticate_token(token:string) {
 export async function authenticate_username_password(username: string, password: string) {
     const profile = await getProfile(username)
     if (profile == null) {
-        return {error: "Wrong password"};
+        return {error: "No profile found"};
     }
+    console.log(profile.password)
     const passwordComparison = await comparePasswords(password, profile.password);
+    console.log(password)
     if (!passwordComparison) {
         return {error: "Wrong password"};
     }

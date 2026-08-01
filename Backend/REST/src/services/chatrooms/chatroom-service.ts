@@ -1,6 +1,6 @@
 import { Server } from "socket.io";
 import { decode_jwt } from "../../auth/utils/jwt/jwt";
-const io = new Server(3000)
+const io = new Server(3030)
 
 io.on("connection", (socket) => {
     socket.emit("info", "Connection established");

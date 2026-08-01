@@ -1,6 +1,12 @@
 import * as fs from 'fs';
 import * as crypto from 'crypto';
 
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 var key : NonSharedBuffer;
 
 export function initializeEncryptionParameters() {
