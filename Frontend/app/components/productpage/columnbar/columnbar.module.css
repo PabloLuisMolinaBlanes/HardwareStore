@@ -1,0 +1,8 @@
+.item {
+    font-size:25px;
+}
+
+.columnbar {
+    display: flex;
+    flex-direction: column;
+}
